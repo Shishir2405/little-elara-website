@@ -15,7 +15,7 @@ export function ProgressThread() {
     >
       <motion.div
         style={{ scaleY, transformOrigin: "top" }}
-        className="bg-sage-deep h-full w-full rounded-full"
+        className="bg-sky-deep h-full w-full rounded-full"
       />
     </div>
   );

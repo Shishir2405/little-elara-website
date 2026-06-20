@@ -36,7 +36,7 @@ export function SectionHeading({
         variants={fadeUp}
         className={`max-w-[20ch] text-[clamp(1.5rem,3vw,2.15rem)] font-normal ${light ? "text-cream" : "text-charcoal"}`}
       >
-        {title} {titleBold && <span className="font-semibold">{titleBold}</span>}
+        {title} {titleBold && <span className="text-highlight font-semibold">{titleBold}</span>}
       </motion.h2>
       {subtitle && (
         <motion.p

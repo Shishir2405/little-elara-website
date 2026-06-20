@@ -3,30 +3,32 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ProgressThread } from "@/components/layout/ProgressThread";
+import { StickyContact } from "@/components/layout/StickyContact";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Little Elara Steps | Specialized Day Care & Pre-School in East Delhi",
+  title: "Little Elara Steps | Inclusive Day Care & Pre School in New Ashok Nagar, Delhi",
   description:
-    "Warm, structured day care and pre-school in East Delhi for every child, including those with ASD, ADHD and developmental delays. Book a no-obligation visit.",
+    "A safe, happy and structured inclusive day care & pre school in New Ashok Nagar, East Delhi. Play-based learning, life skills and support for every child. Book a visit.",
   keywords: [
-    "day care East Delhi",
+    "day care New Ashok Nagar",
     "pre school East Delhi",
-    "special needs day care",
-    "ASD ADHD child care",
+    "inclusive day care Delhi",
+    "play school New Ashok Nagar",
+    "special needs day care Delhi",
     "Little Elara Steps",
   ],
   openGraph: {
-    title: "Little Elara Steps | Specialized Day Care & Pre-School",
+    title: "Little Elara Steps | Inclusive Day Care & Pre School",
     description:
-      "A safe, structured and joyful space for every child in East Delhi, including children with ASD, ADHD and developmental delays.",
+      "Every child learns at their own pace. Every little step matters. Inclusive day care & pre school in New Ashok Nagar, East Delhi.",
     type: "website",
     locale: "en_IN",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAF8F2",
+  themeColor: "#F6FBFE",
   width: "device-width",
   initialScale: 1,
 };
@@ -36,18 +38,18 @@ const jsonLd = {
   "@type": "ChildCare",
   name: SITE.name,
   description:
-    "Specialized day care and pre-school for every child, including children with ASD, ADHD and developmental delays.",
+    "Inclusive day care and pre school for every child, including children with ASD, ADHD and developmental delays.",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "123 Garden Lane",
-    addressLocality: "East Delhi",
+    streetAddress: "B-298, Plot No. 12-B, Block B",
+    addressLocality: "New Ashok Nagar, East Delhi",
     addressRegion: "Delhi",
-    postalCode: "110092",
+    postalCode: "110096",
     addressCountry: "IN",
   },
   telephone: SITE.phone,
   email: SITE.email,
-  openingHours: "Mo-Fr 08:00-18:00",
+  openingHours: "Mo-Sa 09:00-18:00",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -65,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <StickyContact />
       </body>
     </html>
   );

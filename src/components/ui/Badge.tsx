@@ -7,8 +7,9 @@ export function Badge({
 }) {
   return (
     <span
-      className={`rounded-pill border-border-soft bg-cream/70 text-ink-soft inline-flex items-center gap-1.5 border px-4 py-1.5 text-[0.72rem] font-medium tracking-wide ${className}`}
+      className={`rounded-pill border-highlight/25 bg-highlight-soft text-highlight-deep inline-flex items-center gap-1.5 border px-4 py-1.5 text-[0.74rem] font-semibold tracking-wide ${className}`}
     >
+      <span className="bg-highlight h-1.5 w-1.5 rounded-full" aria-hidden />
       {children}
     </span>
   );

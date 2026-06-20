@@ -2,7 +2,7 @@
    All decorative + aria-hidden. Add the `floaty` class for ambient motion. */
 
 type D = { className?: string; style?: React.CSSProperties };
-const stroke = "#4a4a4a";
+const stroke = "#5b7da0";
 
 export function Rocket({ className, style }: D) {
   return (
@@ -191,6 +191,41 @@ export function DashedConnector({ className, style }: D) {
         stroke={stroke}
         strokeWidth="2.5"
       />
+    </svg>
+  );
+}
+
+/* A small heart centred at the origin (for the trail). */
+const HEART =
+  "M0 5 C -6 -1 -8.5 -4 -8.5 -6.6 C -8.5 -9.6 -4.8 -10.6 -2.2 -8.3 C -1.2 -7.4 0 -6 0 -6 C 0 -6 1.2 -7.4 2.2 -8.3 C 4.8 -10.6 8.5 -9.6 8.5 -6.6 C 8.5 -4 6 -1 0 5 Z";
+
+/* Animated trail: a flowing dotted line connecting the two hero kids.
+   Pass withHearts to add little red hearts pulsing along it. */
+export function HeartTrail({ className, style, withHearts = false }: D & { withHearts?: boolean }) {
+  const hearts: Array<[number, number, number]> = [
+    [165, 92, 0],
+    [380, 116, 0.5],
+    [600, 70, 1],
+  ];
+  return (
+    <svg viewBox="0 0 760 150" className={className} style={style} aria-hidden fill="none">
+      <path
+        className="dashed-path dash-flow"
+        d="M12 60 C 170 -8 260 130 380 104 S 600 0 748 66"
+        stroke={stroke}
+        strokeWidth="2.5"
+      />
+      {withHearts &&
+        hearts.map(([x, y, delay], i) => (
+          <g key={i} transform={`translate(${x} ${y})`}>
+            <path
+              className="heart-pulse"
+              style={{ animationDelay: `${delay}s` }}
+              d={HEART}
+              fill="#ef4d63"
+            />
+          </g>
+        ))}
     </svg>
   );
 }

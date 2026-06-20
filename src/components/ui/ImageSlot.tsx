@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import { Image as ImageIcon } from "@phosphor-icons/react/dist/ssr";
 
 type Shape = "arch" | "rounded" | "circle" | "square" | "tall" | "wide";
@@ -13,18 +16,19 @@ const RADIUS: Record<Shape, string> = {
 };
 
 const TINT_BG: Record<string, string> = {
+  sky: "bg-sky-soft",
   sage: "bg-sage-soft",
   clay: "bg-clay-soft",
   sand: "bg-sand-soft",
   blush: "bg-blush-soft",
+  lilac: "bg-lilac-soft",
   cream: "bg-cream-deep",
 };
 
 /**
- * Drop-in image slot. Pass `src` to use a real photo, otherwise it renders a
- * tasteful labelled placeholder so you can see exactly where each photo goes.
- *
- * TODO(client): add real, consented photographs and pass them via `src`.
+ * Drop-in image slot. Pass `src` to use a real photo. If the file is missing
+ * (or fails to load), it gracefully shows a labelled placeholder instead of a
+ * broken image, so you always see exactly where each photo goes.
  */
 export function ImageSlot({
   src,
@@ -43,18 +47,22 @@ export function ImageSlot({
   aspect?: string;
   className?: string;
 }) {
+  const [failed, setFailed] = useState(false);
+  const showImage = Boolean(src) && !failed;
+
   return (
     <div
       className={`relative overflow-hidden ${className}`}
       style={{ borderRadius: RADIUS[shape], aspectRatio: aspect }}
     >
-      {src ? (
+      {showImage ? (
         <Image
-          src={src}
+          src={src as string}
           alt={alt}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
+          onError={() => setFailed(true)}
         />
       ) : (
         <div

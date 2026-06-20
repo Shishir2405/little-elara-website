@@ -27,55 +27,61 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
-      <nav
-        className={`rounded-pill mx-auto flex max-w-[1180px] items-center justify-between border px-4 py-2.5 transition-all duration-300 sm:px-6 ${
-          scrolled
-            ? "border-border-soft shadow-medium bg-white/85 backdrop-blur-md"
-            : "shadow-soft border-transparent bg-white/60 backdrop-blur"
-        }`}
-      >
-        {/* Left links (desktop) */}
-        <ul className="text-charcoal hidden items-center gap-6 text-[0.9rem] lg:flex">
-          {left.map((l) => (
-            <li key={l.href}>
-              <a href={l.href} className="hover:text-sage-deep transition-colors">
-                {l.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* Center logo */}
-        <a href="#top" className="lg:absolute lg:left-1/2 lg:-translate-x-1/2" aria-label="Home">
-          <Logo size={56} />
-        </a>
-
-        {/* Right links + CTA (desktop) */}
-        <div className="hidden items-center gap-6 lg:flex">
-          <ul className="text-charcoal flex items-center gap-6 text-[0.9rem]">
-            {right.map((l) => (
+      <div className="relative mx-auto max-w-[1180px]">
+        <nav
+          className={`rounded-pill flex min-h-[64px] items-center justify-between bg-white px-5 py-2.5 transition-shadow duration-300 sm:px-7 ${
+            scrolled ? "shadow-lift" : "shadow-medium"
+          }`}
+        >
+          {/* Left links (desktop) */}
+          <ul className="text-charcoal hidden items-center gap-6 text-[0.9rem] font-medium lg:flex">
+            {left.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="hover:text-sage-deep transition-colors">
+                <a href={l.href} className="link-underline hover:text-sky-deep transition-colors">
                   {l.label}
                 </a>
               </li>
             ))}
           </ul>
-          <Button href="#contact" variant="secondary">
-            Get in touch
-          </Button>
-        </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="bg-cream text-charcoal ml-auto grid h-10 w-10 place-items-center rounded-full lg:hidden"
-          onClick={() => setOpen((o) => !o)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
+          {/* Right links + CTA (desktop) */}
+          <div className="ml-auto hidden items-center gap-6 lg:flex">
+            <ul className="text-charcoal flex items-center gap-6 text-[0.9rem] font-medium">
+              {right.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="link-underline hover:text-sky-deep transition-colors">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <Button href="#contact" variant="primary">
+              Book a Visit
+            </Button>
+          </div>
+
+          {/* Mobile toggle */}
+          <button
+            className="bg-sky-soft text-sky-deep ml-auto grid h-10 w-10 place-items-center rounded-full lg:hidden"
+            onClick={() => setOpen((o) => !o)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X size={22} /> : <List size={22} />}
+          </button>
+        </nav>
+
+        {/* Centered logo medallion */}
+        <a
+          href="#top"
+          aria-label="Little Elara Steps home"
+          className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
         >
-          {open ? <X size={22} /> : <List size={22} />}
-        </button>
-      </nav>
+          <span className="shadow-medium ring-border-soft block rounded-full bg-white p-1 ring-1">
+            <Logo size={62} />
+          </span>
+        </a>
+      </div>
 
       {/* Mobile overlay menu */}
       <AnimatePresence>
@@ -85,7 +91,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: reduce ? 0 : 0.3, ease: EASE }}
-            className="border-border-soft bg-cream shadow-lift mx-auto mt-3 max-w-[1180px] rounded-lg border p-6 lg:hidden"
+            className="border-border-soft shadow-lift mx-auto mt-10 max-w-[1180px] rounded-lg border bg-white p-6 lg:hidden"
           >
             <ul className="flex flex-col gap-1 text-lg">
               {NAV_LINKS.map((l) => (
@@ -93,7 +99,7 @@ export function Navbar() {
                   <a
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="text-charcoal hover:bg-cream-deep block rounded-md px-3 py-2.5 transition-colors"
+                    className="text-charcoal hover:bg-sky-soft block rounded-md px-3 py-2.5 transition-colors"
                   >
                     {l.label}
                   </a>
@@ -101,8 +107,8 @@ export function Navbar() {
               ))}
             </ul>
             <div className="mt-4">
-              <Button href="#contact" full onClick={() => setOpen(false)}>
-                Get in touch
+              <Button href="#contact" full onClick={() => setOpen(false)} arrow>
+                Book a Visit
               </Button>
             </div>
           </motion.div>

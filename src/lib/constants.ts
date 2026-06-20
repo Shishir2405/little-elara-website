@@ -1,242 +1,247 @@
 /* ============================================================
    SINGLE SOURCE OF TRUTH FOR ALL SITE COPY
-   Edit text here — components read from this file.
+   Content from the brand's own posters & brief.
    ============================================================ */
 
 export const SITE = {
   name: "Little Elara Steps",
-  tagline: "Where little steps become confident journeys.",
-  category: "Specialized Day Care · East Delhi",
-  // TODO(client): confirm real contact details
-  phone: "+91 90000 00000",
-  email: "hello@littleelarasteps.com",
-  address: "123 Garden Lane, East Delhi, Delhi 110092",
-  hours: "Monday to Friday, 8:00 AM to 6:00 PM",
+  category: "Inclusive Day Care & Pre School",
+  slogan: "Where little steps become confident journeys.",
+  tagline: "Every Child Learns at Their Own Pace. Every Little Step Matters.",
+  phone: "+91 93109 82342",
+  phoneRaw: "919310982342",
+  whatsapp: "919310982342",
+  // TODO(client): confirm a contact email
+  email: "littleelarasteps@gmail.com",
+  address: "B-298, Plot No. 12-B, Block B, New Ashok Nagar, East Delhi, Delhi 110096",
+  area: "New Ashok Nagar, East Delhi",
+  // TODO(client): confirm opening hours
+  hours: "Monday to Saturday, 9:00 AM to 6:00 PM",
+  mapsQuery: "New Ashok Nagar, East Delhi, Delhi 110096",
+  instagram: "https://www.instagram.com/littleelarasteps",
 };
 
 export const NAV_LINKS = [
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Daily Routine", href: "#routine" },
-  { label: "Progress", href: "#progress" },
+  { label: "Programs", href: "#programs" },
+  { label: "Why Us", href: "#why" },
+  { label: "Journey", href: "#journey" },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const HERO = {
-  badge: "Specialized Day Care · East Delhi",
-  // Split so we can bold the second half, matching the reference treatment.
-  titleLight: "Every child deserves care",
-  titleBold: "that is kind, safe and trusted",
+  badge: "Inclusive Day Care & Pre School · New Ashok Nagar",
+  titleLight: "Every child learns at their own pace.",
+  titleBold: "Every little step matters.",
   subtitle:
-    "A warm, structured space for every child, including children with ASD, ADHD and developmental delays. Gentle, life-skills-based care that gives parents real peace of mind.",
-  ctaPrimary: "Book a visit",
-  ctaSecondary: "Explore our programs",
-  chips: ["Inclusive by design", "Trained special educators", "Small group sizes"],
-};
-
-export const TRUST = {
-  title: "Safe hands,",
-  titleBold: "caring hearts",
-  subtitle: "Everything we do is built so you can feel confident leaving your child with us.",
-  items: [
-    {
-      icon: "ShieldCheck",
-      title: "Professional care you can trust",
-      tint: "sand",
-    },
-    { icon: "GraduationCap", title: "Trained special educators", tint: "clay" },
-    { icon: "HeartStraight", title: "Complete peace of mind", tint: "sage" },
-    { icon: "Sparkle", title: "Inclusive, every single day", tint: "blush" },
-  ],
+    "A safe, happy and structured space for every child, including children who need extra developmental support. Learning through play, life skills and lots of love.",
+  ctaPrimary: "Book a Visit",
+  ctaSecondary: "Our Programs",
+  chips: ["Safe & secure", "Inclusive", "Play-based", "Parent-focused"],
 };
 
 export const ABOUT = {
   badge: "About Us",
-  title: "Every child's path looks different.",
-  titleBold: "We meet them on it.",
+  title: "A warm second home where",
+  titleBold: "every child belongs.",
   paragraphs: [
-    "We believe day care should adapt to the child, not the other way around. Neurotypical children and children with ASD, ADHD and developmental delays are cared for side by side, in the same warm, structured environment, each with individual attention.",
-    "Your child being seen, safe and gently challenged, that is the feeling we build every day. Predictable routines help every little one settle, and especially support children who need structure to feel secure.",
-    "Trained staff, a life-skills curriculum and low child-to-caregiver ratios mean progress is steady, personal and shared openly with you.",
+    "Little Elara Steps is an inclusive day care and pre school in New Ashok Nagar, East Delhi. We welcome regular children and children with ASD, ADHD and developmental delays into the same caring, structured environment.",
+    "We believe every child grows differently, and every small step matters. Instead of focusing only on studies, we focus on skills, communication, confidence and independence, so each child grows at their own pace.",
+    "Parents receive regular updates and progress feedback, so you always understand your child's journey with us.",
   ],
-  pillars: [
-    { icon: "Heartbeat", label: "Individualized care", tint: "sand" },
-    { icon: "CalendarCheck", label: "Structured routines", tint: "clay" },
-    { icon: "UsersThree", label: "Inclusive environment", tint: "sage" },
-    { icon: "Plant", label: "Life-skills focused", tint: "blush" },
+  focusTitle: "We focus on",
+  focus: [
+    "Skill Development",
+    "Participation in Activities",
+    "Communication Growth",
+    "Social & Emotional Development",
+    "Independence & Life Skills",
+  ],
+  foundersTitle: "Meet the Founders",
+  foundersNote:
+    "Little Elara Steps was started by educators who believe every child deserves patience, structure and a place to belong.",
+  // TODO(client): replace with real founder names, roles, photos and short bios.
+  founders: [
+    {
+      name: "Founder Name",
+      role: "Founder & Lead Educator",
+      bio: "A passionate early-childhood educator focused on inclusive, play-based learning and life skills for every child.",
+    },
+    {
+      name: "Co-Founder Name",
+      role: "Co-Founder & Special Educator",
+      bio: "Specialized in supporting children with developmental needs through structured routines and individual care.",
+    },
   ],
 };
 
-export const SERVICES = {
-  badge: "What We Offer",
-  title: "Programs built around",
-  titleBold: "how your child learns best",
-  subtitle:
-    "Warm early-childhood care and specialized developmental support, under one calm, caring roof.",
+export const PROGRAMS = {
+  badge: "Our Programs",
+  title: "Caring programs for",
+  titleBold: "every little learner",
+  subtitle: "Three flexible programs, each shaped around how your child learns and grows best.",
   items: [
     {
       icon: "Sun",
-      title: "Day Care (Full & Half Day)",
-      desc: "Flexible, structured care for every child in a warm, secure setting.",
-      tint: "clay",
+      title: "Play School & Preschool",
+      age: "2 to 6 years",
+      desc: "A nurturing environment where children learn through play, exploration and social interaction, with age-appropriate activities that support overall development.",
+      tint: "sky",
+      points: ["Play-based learning", "Social interaction", "Pre-school readiness"],
     },
     {
       icon: "PuzzlePiece",
-      title: "Early Intervention & ASD Support",
-      desc: "Individualized, life-skills programs for children on the autism spectrum.",
-      tint: "sage",
-    },
-    {
-      icon: "Lightning",
-      title: "ADHD-Friendly Structured Care",
-      desc: "Sensory-aware routines with movement breaks for children who need extra structure.",
-      tint: "sand",
+      title: "Inclusive Learning Program",
+      age: "2 to 15 years",
+      desc: "For children who benefit from extra developmental support. Activities are planned around each child's current abilities, learning style and developmental goals.",
+      tint: "blush",
+      points: ["Individualized goals", "Developmental support", "ASD, ADHD & delays"],
     },
     {
       icon: "HandHeart",
-      title: "Developmental Delay Support",
-      desc: "Gentle, paced support for speech, motor and social-emotional milestones.",
-      tint: "blush",
-    },
-    {
-      icon: "BookOpen",
-      title: "Life-Skills & Pre-School Readiness",
-      desc: "Foundational learning and independence-building activities for all children.",
-      tint: "clay",
-    },
-    {
-      icon: "ChatsCircle",
-      title: "Parent Guidance & Home Carryover",
-      desc: "Regular updates and simple take-home strategies so progress continues at home.",
+      title: "Day Care Program",
+      age: "All ages",
+      desc: "A safe, structured and engaging space for children through the day, building routine, confidence and independence.",
       tint: "sage",
+      points: [
+        "Daily routine",
+        "Communication skills",
+        "Social interaction",
+        "Life skills",
+        "Play-based learning",
+        "Independence building",
+      ],
     },
   ],
 };
 
-export const APPROACH = {
-  badge: "Our Approach",
-  title: "How we",
-  titleBold: "support your family",
-  subtitle: "A trusted partner at every stage, offering care, comfort and confidence.",
+export const WHY = {
+  badge: "Why Choose Us",
+  title: "What makes",
+  titleBold: "Little Elara Steps different",
+  subtitle: "Not just lessons, but life. We care for the whole child.",
+  items: [
+    { icon: "UsersThree", title: "Inclusive environment", tint: "sky" },
+    { icon: "Sparkle", title: "Individualized activities", tint: "blush" },
+    { icon: "CalendarCheck", title: "Structured daily routine", tint: "sage" },
+    { icon: "NotePencil", title: "Progress monitoring", tint: "clay" },
+    { icon: "ChatsCircle", title: "Parent guidance & support", tint: "sand" },
+    { icon: "PuzzlePiece", title: "Learning through play", tint: "lilac" },
+  ],
+};
+
+export const JOURNEY = {
+  badge: "Age-wise Learning Journey",
+  title: "Every child grows",
+  titleBold: "step by step",
+  subtitle:
+    "We follow an age-wise approach that supports each child's overall development at every important stage.",
   steps: [
     {
-      no: "01",
-      title: "We get to know your child",
-      desc: "A relaxed first visit and conversation so we understand your child's needs, strengths and what helps them feel safe.",
-      icon: "Handshake",
+      age: "2 - 3 years",
+      tint: "lilac",
+      goals: [
+        "Early communication",
+        "Following simple instructions",
+        "Social interaction",
+        "Play & exploration",
+      ],
+    },
+    {
+      age: "3 - 4 years",
+      tint: "sky",
+      goals: [
+        "Vocabulary building",
+        "Pre-writing skills",
+        "Group participation",
+        "Self-help skills",
+      ],
+    },
+    {
+      age: "4 - 5 years",
       tint: "sage",
+      goals: [
+        "School readiness",
+        "Fine motor development",
+        "Attention & listening",
+        "Problem solving",
+      ],
     },
     {
-      no: "02",
-      title: "We build a gentle plan",
-      desc: "Individual goals and a predictable daily routine, shaped around your child rather than a one-size-fits-all timetable.",
-      icon: "ClipboardText",
+      age: "5 - 6 years",
       tint: "clay",
+      goals: [
+        "Confidence building",
+        "Communication skills",
+        "Independence",
+        "Emotional regulation",
+      ],
     },
     {
-      no: "03",
-      title: "We care, observe and adapt",
-      desc: "Warm, attentive support all day, with notes on small wins and steady adjustments as your child grows.",
-      icon: "Eye",
+      age: "6+ years",
       tint: "sand",
+      goals: ["Life skills", "Social skills", "Responsibility", "Strong foundation for learning"],
     },
-    {
-      no: "04",
-      title: "We grow together with you",
-      desc: "Regular check-ins and home strategies, so the progress at our centre carries on at home too.",
-      icon: "Plant",
-      tint: "blush",
-    },
-  ],
-};
-
-export const ROUTINE = {
-  badge: "A Day at Little Elara Steps",
-  title: "Predictable. Comforting.",
-  titleBold: "Built for focus.",
-  subtitle:
-    "A steady rhythm helps every child settle, and gives children with ADHD and ASD the structure that helps them thrive.",
-  // TODO(client): confirm real timings and activities
-  stops: [
-    { time: "8:30 AM", label: "Warm welcome & morning circle", icon: "Sun" },
-    { time: "9:15 AM", label: "Skill-building activities (small groups)", icon: "PuzzlePiece" },
-    { time: "10:30 AM", label: "Snack time & sensory play", icon: "BowlFood" },
-    { time: "11:30 AM", label: "Outdoor & gross-motor time", icon: "Tree" },
-    { time: "12:30 PM", label: "Lunch & independence skills", icon: "ForkKnife" },
-    { time: "1:30 PM", label: "Quiet rest & calm-down time", icon: "Moon" },
-    { time: "2:30 PM", label: "Story time & creative expression", icon: "PaintBrush" },
-    { time: "3:30 PM", label: "Wind-down & happy pickup", icon: "HandWaving" },
-  ],
-};
-
-export const PROGRESS = {
-  badge: "Tracking Growth, Together",
-  title: "We celebrate small steps",
-  titleBold: "as much as big ones",
-  subtitle:
-    "Progress here means individual goals and honest, regular communication, not generic test scores.",
-  milestones: [
-    { title: "Personalized goal setting", icon: "Target", tint: "sage" },
-    { title: "Monthly progress notes", icon: "NotePencil", tint: "clay" },
-    { title: "Regular parent check-ins", icon: "ChatCircleText", tint: "sand" },
-    { title: "Celebrating every milestone", icon: "Confetti", tint: "blush" },
   ],
 };
 
 export const GALLERY = {
   badge: "A Peek Inside",
-  title: "Where every day brings",
-  titleBold: "a small joyful moment",
-  subtitle: "Bright, calm rooms made for little hands and big imaginations.",
-  // TODO(client): replace with real, consented photographs of the centre.
-  slots: [
-    { label: "Children at play", shape: "tall" },
-    { label: "Art & craft corner", shape: "wide" },
-    { label: "Story time", shape: "square" },
-    { label: "Outdoor garden", shape: "square" },
-    { label: "Sensory play", shape: "wide" },
-    { label: "Building blocks", shape: "square" },
-  ],
-};
-
-export const TESTIMONIALS = {
-  badge: "Kind Words from Families",
-  title: "Parents feel it the moment",
-  titleBold: "they walk in",
-  // TODO(client): replace with real, permission-given parent quotes.
-  items: [
+  title: "Our safe, happy",
+  titleBold: "learning space",
+  subtitle: "A bright, inclusive setup designed for happy learning and holistic development.",
+  // Real brand photos. TODO(client): add more activity photos of children as they come.
+  images: [
     {
-      quote:
-        "From the very first visit, our daughter felt safe. The team treats her with so much patience and warmth.",
-      name: "Priya Mehta",
-      role: "Parent of a 3-year-old",
+      src: "/school-view/school-3.jpg",
+      title: "Our Play Room",
+      desc: "A bright, branded space made for little hands.",
+      tint: "clay",
     },
     {
-      quote:
-        "The structured routine made a real difference for our son. We finally feel completely confident at drop-off.",
-      name: "Arjun Sharma",
-      role: "Working parent",
+      src: "/school-view/school-1.jpg",
+      title: "Learning Corners",
+      desc: "Cozy nooks for stories, play and discovery.",
+      tint: "sand",
     },
     {
-      quote:
-        "Friendly, professional and genuinely caring. The daily updates put my mind at ease every single day.",
-      name: "Sneha Reddy",
-      role: "Mother of two",
+      src: "/admissions/admissions-1.jpg",
+      title: "Age-wise Journey",
+      desc: "Goals tailored to every stage of growth.",
+      tint: "sage",
+    },
+    {
+      src: "/admissions/admissions-2.jpg",
+      title: "Inclusive Care",
+      desc: "A safe, happy space for every child.",
+      tint: "blush",
+    },
+    {
+      src: "/school-view/school-2.jpg",
+      title: "Holistic Setup",
+      desc: "Designed for happy, all-round development.",
+      tint: "sky",
+    },
+    {
+      src: "/admissions/admissions-3.jpg",
+      title: "Progress Tracking",
+      desc: "We focus on life skills, not just studies.",
+      tint: "lilac",
     },
   ],
 };
 
 export const CONTACT = {
-  badge: "Get in Touch",
-  title: "Let's talk about",
-  titleBold: "what your child needs",
+  badge: "Admission Enquiry",
+  title: "Let's give your child a",
+  titleBold: "happy little start",
   subtitle:
-    "Book a no-obligation visit and consultation. We would love to show you around and answer your questions.",
+    "Admissions are open with limited seats. Book a no-pressure visit, meet our team and see the space for yourself.",
 };
 
 export const FOOTER = {
   blurb:
-    "A safe, structured and joyful space where every child is known, supported and gently guided to their next step.",
-  madeWith: "Made with care in East Delhi",
+    "An inclusive day care and pre school where every child is safe, supported and celebrated. Small steps today, confident futures tomorrow.",
+  madeWith: "Made with care in New Ashok Nagar, Delhi",
 };

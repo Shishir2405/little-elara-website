@@ -1,23 +1,40 @@
-/* Scalloped / bumpy section divider, matching the reference's soft wavy edges. */
+/* Clean, small, uniform wavy section divider. */
 
-function scallopPath(width = 1440, bumps = 16, amp = 26, baseY = 30, height = 48) {
-  const seg = width / bumps;
-  let d = `M0,${height} L0,${baseY}`;
-  for (let i = 0; i < bumps; i++) {
-    d += ` q ${seg / 2},${-amp} ${seg},0`;
+function wavePath() {
+  const width = 1440;
+  const height = 40;
+  const baseY = 22;
+  const amp = 11; // small amplitude
+  const seg = 80; // half-wavelength -> uniform ripples
+  let d = `M0 ${baseY}`;
+  let up = true;
+  for (let x = 0; x < width; x += seg) {
+    const nx = x + seg;
+    const cx = x + seg / 2;
+    const cy = up ? baseY - amp : baseY + amp;
+    d += ` Q ${cx} ${cy} ${nx} ${baseY}`;
+    up = !up;
   }
-  d += ` L${width},${height} Z`;
+  d += ` L${width} ${height} L0 ${height} Z`;
   return d;
 }
+
+const PATH = wavePath();
 
 const FILL: Record<string, string> = {
   cream: "var(--color-cream)",
   "cream-deep": "var(--color-cream-deep)",
   white: "var(--color-white)",
-  charcoal: "var(--color-charcoal)",
+  sky: "var(--color-sky)",
+  "sky-soft": "var(--color-sky-soft)",
   sage: "var(--color-sage)",
+  "sage-soft": "var(--color-sage-soft)",
   clay: "var(--color-clay)",
   sand: "var(--color-sand)",
+  blush: "var(--color-blush)",
+  lilac: "var(--color-lilac)",
+  "lilac-soft": "var(--color-lilac-soft)",
+  footer: "var(--color-footer)",
 };
 
 export function Wave({
@@ -36,11 +53,11 @@ export function Wave({
       style={{ transform: flip ? "scaleY(-1)" : undefined }}
     >
       <svg
-        viewBox="0 0 1440 48"
+        viewBox="0 0 1440 40"
         preserveAspectRatio="none"
-        className="block h-[clamp(26px,4vw,52px)] w-full"
+        className="block h-[clamp(22px,3vw,40px)] w-full"
       >
-        <path d={scallopPath()} fill={FILL[fill] ?? fill} />
+        <path d={PATH} fill={FILL[fill] ?? fill} />
       </svg>
     </div>
   );
