@@ -6,6 +6,8 @@
 export const SITE = {
   name: "Little Elara Steps",
   category: "Inclusive Day Care & Pre School",
+  // NOTE: client gave "littleelerasteps.com" (spelled 'elera'); brand is 'Elara'. Confirm + change here if needed.
+  url: "https://littleelerasteps.com",
   slogan: "Where little steps become confident journeys.",
   tagline: "Every Child Learns at Their Own Pace. Every Little Step Matters.",
   phone: "+91 93109 82342",
