@@ -13,7 +13,7 @@ export function Hero() {
   const words = HERO.titleLight.split(" ");
 
   return (
-    <section id="top" className="bg-cream relative overflow-hidden pt-10">
+    <section id="top" className="bg-cream relative overflow-hidden pt-8 sm:pt-10">
       {/* Faded graph-paper grid, stronger toward the sides */}
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
 
@@ -32,7 +32,7 @@ export function Hero() {
             <Badge>{HERO.badge}</Badge>
           </motion.div>
 
-          <h1 className="text-charcoal mt-5 text-[clamp(1.9rem,4.6vw,3.2rem)] leading-[1.1] font-normal">
+          <h1 className="text-charcoal mt-5 text-[clamp(1.6rem,4.6vw,3.2rem)] leading-[1.1] font-normal">
             <motion.span
               variants={stagger(0.06)}
               initial="hidden"
@@ -117,7 +117,7 @@ export function Hero() {
           width={1024}
           height={1536}
           priority
-          className="h-auto w-[clamp(135px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
+          className="h-auto w-[clamp(92px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
         />
       </motion.div>
 
@@ -133,7 +133,7 @@ export function Hero() {
           width={1024}
           height={1536}
           priority
-          className="h-auto w-[clamp(135px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
+          className="h-auto w-[clamp(92px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
         />
       </motion.div>
 

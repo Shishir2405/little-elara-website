@@ -62,7 +62,7 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="bg-sky-soft text-sky-deep ml-auto grid h-10 w-10 place-items-center rounded-full lg:hidden"
+            className="bg-sky-soft text-sky-deep ml-auto grid h-11 w-11 place-items-center rounded-full lg:hidden"
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}

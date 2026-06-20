@@ -42,7 +42,7 @@ export function Gallery() {
   }, [open, close, prev, next]);
 
   return (
-    <section id="gallery" className="bg-sage-soft relative pt-20">
+    <section id="gallery" className="bg-sage-soft relative pt-14 sm:pt-20">
       <Birds className="absolute top-24 left-[6%] hidden w-16 opacity-70 md:block" />
       <CloudRainbow className="floaty absolute top-20 right-[7%] hidden w-20 opacity-80 md:block" />
 

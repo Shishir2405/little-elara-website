@@ -22,7 +22,7 @@ function Card({ item, hidden = false }: { item: (typeof WHY.items)[number]; hidd
 
 export function WhyChooseUs() {
   return (
-    <section id="why" className="bg-sky-soft relative pt-20">
+    <section id="why" className="bg-sky-soft relative pt-14 sm:pt-20">
       <div className="mx-auto max-w-[1180px] px-6">
         <SectionHeading
           badge={WHY.badge}
@@ -33,7 +33,7 @@ export function WhyChooseUs() {
       </div>
 
       {/* Auto-scrolling marquee of colour cards (hover to pause) */}
-      <div className="marquee no-scrollbar mt-12 w-full px-6">
+      <div className="marquee no-scrollbar mt-8 w-full px-6 sm:mt-12">
         <div className="marquee-track flex">
           {WHY.items.map((item) => (
             <Card key={item.title} item={item} />
@@ -44,7 +44,7 @@ export function WhyChooseUs() {
         </div>
       </div>
 
-      <Wave fill="cream" className="mt-16" />
+      <Wave fill="cream" className="mt-10 sm:mt-16" />
     </section>
   );
 }

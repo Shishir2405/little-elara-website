@@ -11,7 +11,7 @@ import { tintCard, tintSoft } from "@/lib/tints";
 
 export function Programs() {
   return (
-    <section id="programs" className="bg-cream relative pt-20">
+    <section id="programs" className="bg-cream relative pt-14 sm:pt-20">
       <div className="mx-auto max-w-[1180px] px-6">
         <SectionHeading
           badge={PROGRAMS.badge}
@@ -25,7 +25,7 @@ export function Programs() {
           initial="hidden"
           whileInView="show"
           viewport={inView}
-          className="mt-12 grid gap-6 md:grid-cols-3"
+          className="mt-8 grid gap-6 sm:mt-12 md:grid-cols-3"
         >
           {PROGRAMS.items.map((p) => (
             <motion.article

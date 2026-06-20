@@ -12,8 +12,8 @@ import { fadeUp, fromLeft, fromRight, inView, stagger } from "@/lib/motion";
 
 export function About() {
   return (
-    <section id="about" className="bg-sky-soft relative pt-8">
-      <div className="mx-auto grid max-w-[1180px] items-center gap-10 px-6 py-10 md:grid-cols-[0.9fr_1.1fr]">
+    <section id="about" className="bg-sky-soft relative overflow-x-clip pt-8">
+      <div className="mx-auto grid max-w-[1180px] items-center gap-6 px-6 py-10 md:grid-cols-[0.9fr_1.1fr] md:gap-10">
         {/* Photo — cut-out educator on a coloured arch */}
         <motion.div
           variants={fromLeft}
@@ -44,7 +44,7 @@ export function About() {
           </div>
 
           {/* floating tagline card */}
-          <div className="floaty slow shadow-lift absolute -bottom-3 -left-3 z-20 flex max-w-[220px] items-center gap-3 rounded-2xl bg-white p-3.5">
+          <div className="floaty slow shadow-lift absolute -bottom-2 left-1 z-20 flex max-w-[60vw] items-center gap-3 rounded-2xl bg-white p-3.5 sm:-bottom-3 sm:-left-3 sm:max-w-[220px]">
             <span className="bg-highlight-soft text-highlight-deep grid h-10 w-10 shrink-0 place-items-center rounded-full">
               <HeartStraight size={20} weight="fill" />
             </span>

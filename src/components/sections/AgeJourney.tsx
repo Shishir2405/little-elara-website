@@ -40,7 +40,7 @@ export function AgeJourney() {
   }, [reduce]);
 
   return (
-    <section id="journey" className="bg-cream relative pt-20">
+    <section id="journey" className="bg-cream relative pt-14 sm:pt-20">
       <div className="mx-auto max-w-[1180px] px-6">
         <SectionHeading
           badge={JOURNEY.badge}

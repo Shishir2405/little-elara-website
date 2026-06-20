@@ -59,11 +59,11 @@ export function Contact() {
   }
 
   const fieldCls =
-    "rounded-sm border border-border-soft bg-cream px-3.5 py-2.5 text-[0.9rem] text-charcoal outline-none transition focus:border-sky-deep focus:ring-2 focus:ring-sky-deep/25";
+    "rounded-sm border border-border-soft bg-cream px-3.5 py-3 text-[0.9rem] text-charcoal outline-none transition focus:border-sky-deep focus:ring-2 focus:ring-sky-deep/25";
 
   return (
-    <section id="contact" className="bg-cream relative pt-20">
-      <div className="mx-auto max-w-[1180px] px-6 pb-20">
+    <section id="contact" className="bg-cream relative pt-14 sm:pt-20">
+      <div className="mx-auto max-w-[1180px] px-6 pb-14 sm:pb-20">
         <div className="grid items-start gap-10 lg:grid-cols-2">
           {/* Left: intro + contact methods */}
           <motion.div variants={stagger(0.1)} initial="hidden" whileInView="show" viewport={inView}>

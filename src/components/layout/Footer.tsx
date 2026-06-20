@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="bg-cream-deep text-ink relative">
       <Wave fill="cream" flip className="absolute -top-px left-0" />
 
-      <div className="relative mx-auto max-w-[1180px] px-6 pt-24 pb-10">
+      <div className="relative mx-auto max-w-[1180px] px-6 pt-14 pb-10 sm:pt-20 md:pt-24">
         <div className="grid gap-10 md:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
           {/* Brand */}
           <div>
