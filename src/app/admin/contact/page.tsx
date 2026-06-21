@@ -6,7 +6,6 @@ import {
   ArrowClockwise,
   DownloadSimple,
   MagnifyingGlass,
-  SignOut,
   Trash,
 } from "@phosphor-icons/react/dist/ssr";
 
@@ -112,11 +111,6 @@ export default function AdminContactPage() {
     await fetch(`/api/admin/submissions/${id}`, { method: "DELETE" }).catch(() => {});
   }
 
-  async function logout() {
-    await fetch("/api/admin/logout", { method: "POST" }).catch(() => {});
-    router.replace("/admin-login");
-  }
-
   return (
     <div className="mx-auto max-w-[1200px] px-4 py-8 sm:px-6">
       {/* Header */}
@@ -139,12 +133,6 @@ export default function AdminContactPage() {
             className="rounded-pill bg-sage-deep inline-flex items-center gap-2 px-4 py-2.5 text-[0.85rem] font-semibold text-white transition hover:brightness-110"
           >
             <DownloadSimple size={16} weight="bold" /> Export Excel
-          </button>
-          <button
-            onClick={logout}
-            className="rounded-pill bg-charcoal inline-flex items-center gap-2 px-4 py-2.5 text-[0.85rem] font-semibold text-white transition hover:brightness-110"
-          >
-            <SignOut size={16} weight="bold" /> Logout
           </button>
         </div>
       </div>

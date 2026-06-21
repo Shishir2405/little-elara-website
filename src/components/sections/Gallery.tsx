@@ -10,21 +10,45 @@ import { Birds, CloudRainbow } from "@/components/ui/Doodles";
 import { CaretLeft, CaretRight, MagnifyingGlassPlus, X } from "@phosphor-icons/react/dist/ssr";
 import { fadeUp, inView, stagger } from "@/lib/motion";
 
-const IMAGES = GALLERY.images;
+type GImg = { src: string; title: string };
+
+const STATIC: GImg[] = GALLERY.images.map((g) => ({ src: g.src, title: g.title }));
 
 export function Gallery() {
   const scroller = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<number | null>(null);
+  const [images, setImages] = useState<GImg[]>(STATIC);
+
+  // Pull admin-managed images from the DB; keep static fallback if none.
+  useEffect(() => {
+    let active = true;
+    fetch("/api/gallery")
+      .then((r) => r.json())
+      .then((d: { items?: { url: string; title?: string }[] }) => {
+        if (active && d.items && d.items.length) {
+          setImages(
+            d.items.map((it) => ({ src: it.url, title: it.title || "Little Elara Steps" }))
+          );
+        }
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const scrollByCards = (dir: number) =>
     scroller.current?.scrollBy({ left: dir * 320, behavior: "smooth" });
 
   const close = useCallback(() => setOpen(null), []);
   const prev = useCallback(
-    () => setOpen((i) => (i === null ? i : (i - 1 + IMAGES.length) % IMAGES.length)),
-    []
+    () => setOpen((i) => (i === null ? i : (i - 1 + images.length) % images.length)),
+    [images.length]
   );
-  const next = useCallback(() => setOpen((i) => (i === null ? i : (i + 1) % IMAGES.length)), []);
+  const next = useCallback(
+    () => setOpen((i) => (i === null ? i : (i + 1) % images.length)),
+    [images.length]
+  );
 
   useEffect(() => {
     if (open === null) return;
@@ -64,9 +88,9 @@ export function Gallery() {
         viewport={inView}
         className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:px-[max(1.5rem,calc((100vw-1180px)/2))]"
       >
-        {IMAGES.map((img, i) => (
+        {images.map((img, i) => (
           <motion.button
-            key={img.src}
+            key={`${img.src}-${i}`}
             variants={fadeUp}
             onClick={() => setOpen(i)}
             aria-label={`Open ${img.title}`}
@@ -112,7 +136,7 @@ export function Gallery() {
 
       {/* Lightbox */}
       <AnimatePresence>
-        {open !== null && (
+        {open !== null && images[open] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -122,7 +146,7 @@ export function Gallery() {
             className="bg-charcoal/80 fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-sm"
             role="dialog"
             aria-modal="true"
-            aria-label={IMAGES[open].title}
+            aria-label={images[open].title}
           >
             <button
               onClick={close}
@@ -152,8 +176,8 @@ export function Gallery() {
               className="relative h-[80vh] w-[88vw] max-w-[920px]"
             >
               <Image
-                src={IMAGES[open].src}
-                alt={IMAGES[open].title}
+                src={images[open].src}
+                alt={images[open].title}
                 fill
                 unoptimized
                 sizes="90vw"
@@ -173,7 +197,7 @@ export function Gallery() {
             </button>
 
             <p className="rounded-pill absolute bottom-5 left-1/2 -translate-x-1/2 bg-white/15 px-4 py-1.5 text-[0.85rem] font-medium text-white">
-              {IMAGES[open].title} · {open + 1} / {IMAGES.length}
+              {images[open].title} · {open + 1} / {images.length}
             </p>
           </motion.div>
         )}
