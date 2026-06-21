@@ -4,6 +4,7 @@ const submissionSchema = new Schema(
   {
     name: { type: String, required: true, trim: true },
     phone: { type: String, required: true, trim: true },
+    email: { type: String, trim: true, default: "" },
     childAge: { type: String, trim: true, default: "" },
     program: { type: String, trim: true, default: "" },
     message: { type: String, trim: true, default: "" },

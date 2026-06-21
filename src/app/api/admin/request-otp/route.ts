@@ -4,6 +4,7 @@ import { Admin } from "@/models/Admin";
 import { Otp } from "@/models/Otp";
 import { generateOtp, hashOtp } from "@/lib/admin-auth";
 import { sendBrevoEmail } from "@/lib/brevo";
+import { otpEmail } from "@/lib/emails";
 
 export const runtime = "nodejs";
 
@@ -39,12 +40,11 @@ export async function POST(req: Request) {
       { upsert: true }
     );
 
+    const mail = otpEmail(code, admin.name ?? "Admin");
     await sendBrevoEmail({
       to: [{ email, name: admin.name ?? "Admin" }],
-      subject: "Your Little Elara Steps admin login code",
-      htmlContent: `<p>Your one-time login code is:</p>
-<h1 style="letter-spacing:6px;font-family:monospace">${code}</h1>
-<p>This code expires in 10 minutes. If you did not request it, you can ignore this email.</p>`,
+      subject: mail.subject,
+      htmlContent: mail.html,
     });
     return generic;
   } catch (e) {

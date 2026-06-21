@@ -47,9 +47,22 @@ export const ABOUT = {
   badge: "About Us",
   title: "A warm second home where",
   titleBold: "every child belongs.",
+  // A paragraph is a string, or an array of parts where { b } is highlighted.
   paragraphs: [
-    "Little Elara Steps is an inclusive day care and pre school in New Ashok Nagar, East Delhi. We welcome regular children and children with ASD, ADHD and developmental delays into the same caring, structured environment.",
-    "We believe every child grows differently, and every small step matters. Instead of focusing only on studies, we focus on skills, communication, confidence and independence, so each child grows at their own pace.",
+    [
+      "Little Elara Steps is an inclusive day care and pre school in New Ashok Nagar, East Delhi. We welcome ",
+      { b: "regular children" },
+      " and children with ",
+      { b: "ASD, ADHD" },
+      " and ",
+      { b: "developmental delays" },
+      " into the same caring, structured environment.",
+    ],
+    [
+      "We believe every child grows differently, and ",
+      { b: "every small step matters" },
+      ". Instead of focusing only on studies, we focus on skills, communication, confidence and independence, so each child grows at their own pace.",
+    ],
     "Parents receive regular updates and progress feedback, so you always understand your child's journey with us.",
   ],
   focusTitle: "We focus on",
@@ -59,22 +72,6 @@ export const ABOUT = {
     "Communication Growth",
     "Social & Emotional Development",
     "Independence & Life Skills",
-  ],
-  foundersTitle: "Meet the Founders",
-  foundersNote:
-    "Little Elara Steps was started by educators who believe every child deserves patience, structure and a place to belong.",
-  // TODO(client): replace with real founder names, roles, photos and short bios.
-  founders: [
-    {
-      name: "Founder Name",
-      role: "Founder & Lead Educator",
-      bio: "A passionate early-childhood educator focused on inclusive, play-based learning and life skills for every child.",
-    },
-    {
-      name: "Co-Founder Name",
-      role: "Co-Founder & Special Educator",
-      bio: "Specialized in supporting children with developmental needs through structured routines and individual care.",
-    },
   ],
 };
 
@@ -246,4 +243,112 @@ export const FOOTER = {
   blurb:
     "An inclusive day care and pre school where every child is safe, supported and celebrated. Small steps today, confident futures tomorrow.",
   madeWith: "Made with care in New Ashok Nagar, Delhi",
+};
+
+export const FOUNDERS = {
+  badge: "Meet the Co-Founders",
+  title: "The people behind",
+  titleBold: "Little Elara Steps",
+  note: "Two child-development professionals who believe every child deserves patience, structure and a place to belong.",
+  people: [
+    {
+      name: "Sakshi",
+      role: "Co-Founder & Special Educator",
+      tagline: "RCI Registered Professional · M.A. Psychology · 8+ years in child development",
+      photo: "/founder/sakshi.jpg",
+      short:
+        "Passionate child-development professional with 8+ years supporting children with diverse developmental, communication, learning and behavioural needs.",
+      bio: [
+        "Passionate and dedicated child development professional with 8+ years of experience supporting children with diverse developmental, communication, learning, and behavioural needs. Skilled in designing individualized intervention strategies, fostering inclusive learning environments, and empowering children to achieve greater independence and confidence.",
+        "As the Co-Founder of Little Elara Steps, I am committed to creating a nurturing, inclusive, and child-centered environment where every child is encouraged to learn, grow, and reach their full potential through structured routines, activity-based learning, life skills training, and social development programs.",
+      ],
+      groups: [
+        {
+          title: "Professional Qualifications",
+          items: [
+            "Registered Rehabilitation Professional (RCI Registered)",
+            "Diploma in Education (D.Ed. Special Education)",
+            "Master's Degree (M.A. Psychology)",
+            "Speech & Language Development Support",
+            "Special Education & Inclusive Learning",
+          ],
+        },
+        {
+          title: "Areas of Expertise",
+          items: [
+            "Special Education",
+            "Speech & Language Development",
+            "Early Childhood Intervention",
+            "Autism Spectrum Disorder (ASD) Support",
+            "ADHD Support Strategies",
+            "Learning Difficulties & Developmental Delays",
+            "Behaviour Management",
+            "Social Skills Development",
+            "Parent Guidance & Counselling",
+            "Individualized Education Planning (IEP)",
+            "Activity-Based Learning Programs",
+          ],
+        },
+      ],
+      mission:
+        "To support every child's unique developmental journey by providing evidence-based interventions, compassionate guidance, and inclusive learning opportunities that promote confidence, independence, communication, and lifelong learning.",
+      quote: "Every child learns differently, and every child deserves the opportunity to succeed.",
+    },
+    {
+      name: "Aarti Rani",
+      role: "Co-Founder & Child Development Coordinator",
+      tagline: "Early Childhood Care · Parent Engagement & Operations · MBA · 5+ years",
+      photo: "/founder/aarti.jpg",
+      short:
+        "Compassionate professional with 5+ years in child development coordination, parent engagement, therapy scheduling and centre operations.",
+      bio: [
+        "Dedicated and compassionate professional with 5+ years of experience in child development coordination, parent engagement, therapy scheduling, and centre operations management. Experienced in working closely with children, parents, therapists, and multidisciplinary teams to ensure a supportive and child-focused environment.",
+        "As the Co-Founder of Little Elara Steps – Day Care & Pre School, I am committed to building a safe, nurturing, and inclusive space where children can learn, grow, develop life skills, and gain confidence through structured routines and activity-based learning experiences.",
+        "My professional journey at THERAkids has provided extensive exposure to child development services, parent counselling support, appointment coordination, team management, and operational planning, helping families access the right developmental support for their children.",
+      ],
+      groups: [
+        {
+          title: "Education",
+          items: ["Bachelor of Arts (B.A.)", "Master's in Political Science", "MBA"],
+        },
+        {
+          title: "Professional Experience",
+          items: [
+            "Co-Founder – Little Elara Steps Day Care & Pre School",
+            "Child Development Coordinator – THERAkids Child Development Centre (5+ years)",
+          ],
+        },
+        {
+          title: "Certifications",
+          items: [
+            "HR Analytics Training",
+            "HR Recruitment Training",
+            "HR Payroll & Compliance Training",
+            "HR Generalist Training",
+            "Advanced Microsoft Excel Certification",
+          ],
+        },
+        {
+          title: "Core Competencies",
+          items: [
+            "Child Development Coordination",
+            "Parent Relationship Management",
+            "Early Childhood Care & Support",
+            "Day Care & Preschool Operations",
+            "Team Coordination & Scheduling",
+            "Client & Family Communication",
+            "Child-Centered Program Planning",
+            "Administrative & Operational Management",
+            "Data Management & Documentation",
+            "Parent Guidance Support",
+            "Community Outreach & Engagement",
+          ],
+        },
+      ],
+      mission:
+        "To create a nurturing and inclusive environment where every child feels safe, valued, supported, and encouraged to reach their fullest potential while building strong partnerships with families and caregivers.",
+      quote:
+        "Every child deserves care, guidance, encouragement, and opportunities to grow with confidence.",
+    },
+  ],
 };

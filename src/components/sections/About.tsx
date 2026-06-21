@@ -4,9 +4,9 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { ABOUT } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
-import { ImageSlot } from "@/components/ui/ImageSlot";
 import { Wave } from "@/components/ui/Wave";
 import { Birds, Blob } from "@/components/ui/Doodles";
+import { Founders } from "./Founders";
 import { CheckCircle, HeartStraight } from "@phosphor-icons/react/dist/ssr";
 import { fadeUp, fromLeft, fromRight, inView, stagger } from "@/lib/motion";
 
@@ -71,7 +71,19 @@ export function About() {
             className="text-ink-soft mt-4 space-y-3 text-[0.95rem] leading-relaxed"
           >
             {ABOUT.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>
+                {typeof p === "string"
+                  ? p
+                  : p.map((seg, j) =>
+                      typeof seg === "string" ? (
+                        <span key={j}>{seg}</span>
+                      ) : (
+                        <span key={j} className="text-sky-deep font-semibold">
+                          {seg.b}
+                        </span>
+                      )
+                    )}
+              </p>
             ))}
           </motion.div>
 
@@ -95,43 +107,8 @@ export function About() {
         </motion.div>
       </div>
 
-      {/* Founders */}
-      <div className="mx-auto max-w-[1180px] px-6 pb-6">
-        <motion.div
-          variants={stagger(0.1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={inView}
-          className="border-border-soft shadow-soft rounded-lg border bg-white p-6 sm:p-8"
-        >
-          <motion.div variants={fadeUp} className="text-center">
-            <h3 className="text-charcoal text-[1.3rem] font-semibold">{ABOUT.foundersTitle}</h3>
-            <p className="text-ink-soft mx-auto mt-2 max-w-[56ch] text-[0.9rem]">
-              {ABOUT.foundersNote}
-            </p>
-          </motion.div>
-
-          <div className="mt-7 grid gap-6 sm:grid-cols-2">
-            {ABOUT.founders.map((f) => (
-              <motion.div
-                key={f.role}
-                variants={fadeUp}
-                className="bg-cream flex flex-col items-center gap-3 rounded-md p-5 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left"
-              >
-                <div className="w-20 shrink-0 sm:w-24">
-                  {/* TODO(client): add founder photo */}
-                  <ImageSlot label="Photo" shape="circle" tint="blush" aspect="1 / 1" />
-                </div>
-                <div>
-                  <h4 className="text-charcoal text-[1.02rem] font-semibold">{f.name}</h4>
-                  <p className="text-sky-deep text-[0.8rem] font-medium">{f.role}</p>
-                  <p className="text-ink-soft mt-1.5 text-[0.84rem] leading-relaxed">{f.bio}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+      {/* Co-Founders */}
+      <Founders />
 
       <Wave fill="cream" className="mt-8" />
     </section>

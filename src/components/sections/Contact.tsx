@@ -51,15 +51,18 @@ export function Contact() {
     setSubmitError("");
     const data = new FormData(e.currentTarget);
     const next: Record<string, boolean> = {};
-    ["name", "phone", "age"].forEach((k) => {
+    ["name", "phone", "email"].forEach((k) => {
       if (!String(data.get(k) ?? "").trim()) next[k] = true;
     });
+    const emailVal = String(data.get("email") ?? "").trim();
+    if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) next.email = true;
     setErrors(next);
     if (Object.keys(next).length > 0) return;
 
     const payload = {
       name: data.get("name"),
       phone: data.get("phone"),
+      email: data.get("email"),
       age: data.get("age"),
       program: data.get("program"),
       message: data.get("message"),
@@ -193,22 +196,32 @@ export function Contact() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="flex flex-col gap-1.5">
+                    <span className="text-charcoal text-[0.82rem] font-medium">Email</span>
+                    <input
+                      name="email"
+                      type="email"
+                      placeholder="you@email.com"
+                      className={fieldCls}
+                    />
+                    {errors.email && <Err>Please enter a valid email</Err>}
+                  </label>
+                  <label className="flex flex-col gap-1.5">
                     <span className="text-charcoal text-[0.82rem] font-medium">
                       Child&rsquo;s age
                     </span>
                     <input name="age" type="text" placeholder="e.g. 3 years" className={fieldCls} />
-                    {errors.age && <Err>Please add your child&rsquo;s age</Err>}
-                  </label>
-                  <label className="flex flex-col gap-1.5">
-                    <span className="text-charcoal text-[0.82rem] font-medium">Interested in</span>
-                    <select name="program" defaultValue="" className={fieldCls}>
-                      <option value="">Select a program</option>
-                      {PROGRAMS.items.map((p) => (
-                        <option key={p.title}>{p.title}</option>
-                      ))}
-                    </select>
                   </label>
                 </div>
+
+                <label className="flex flex-col gap-1.5">
+                  <span className="text-charcoal text-[0.82rem] font-medium">Interested in</span>
+                  <select name="program" defaultValue="" className={fieldCls}>
+                    <option value="">Select a program</option>
+                    {PROGRAMS.items.map((p) => (
+                      <option key={p.title}>{p.title}</option>
+                    ))}
+                  </select>
+                </label>
 
                 <label className="flex flex-col gap-1.5">
                   <span className="text-charcoal text-[0.82rem] font-medium">

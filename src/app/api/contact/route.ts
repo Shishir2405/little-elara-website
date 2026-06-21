@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import { Submission } from "@/models/Submission";
-import { sendBrevoEmail, esc } from "@/lib/brevo";
+import { sendBrevoEmail } from "@/lib/brevo";
+import { adminEnquiryEmail, userConfirmationEmail } from "@/lib/emails";
+import { SITE } from "@/lib/constants";
 
 export const runtime = "nodejs";
 
@@ -15,6 +17,9 @@ export async function POST(req: Request) {
 
   const name = String(body.name ?? "").trim();
   const phone = String(body.phone ?? "").trim();
+  const email = String(body.email ?? "")
+    .trim()
+    .toLowerCase();
   const childAge = String(body.age ?? body.childAge ?? "").trim();
   const program = String(body.program ?? "").trim();
   const message = String(body.message ?? "").trim();
@@ -25,7 +30,7 @@ export async function POST(req: Request) {
 
   try {
     await connectDB();
-    await Submission.create({ name, phone, childAge, program, message });
+    await Submission.create({ name, phone, email, childAge, program, message });
   } catch (e) {
     console.error("contact save failed", e);
     return NextResponse.json(
@@ -34,23 +39,35 @@ export async function POST(req: Request) {
     );
   }
 
-  // Best-effort notification to the admin (never blocks the submission).
+  const data = { name, email, phone, childAge, program, message };
+
+  // 1) Notify the business inbox (best-effort).
   try {
-    const notify = process.env.NOTIFY_EMAIL || process.env.ADMIN_EMAIL;
-    if (notify && process.env.BREVO_API_KEY) {
+    if (process.env.BREVO_API_KEY) {
+      const adminTo = process.env.NOTIFY_EMAIL || process.env.ADMIN_EMAIL || SITE.email;
+      const mail = adminEnquiryEmail(data);
       await sendBrevoEmail({
-        to: [{ email: notify }],
-        subject: `New enquiry: ${name}`,
-        htmlContent: `<h2>New enquiry — Little Elara Steps</h2>
-<p><b>Name:</b> ${esc(name)}</p>
-<p><b>Phone:</b> ${esc(phone)}</p>
-<p><b>Child's age:</b> ${esc(childAge) || "-"}</p>
-<p><b>Program:</b> ${esc(program) || "-"}</p>
-<p><b>Message:</b> ${esc(message) || "-"}</p>`,
+        to: [{ email: adminTo }],
+        subject: mail.subject,
+        htmlContent: mail.html,
       });
     }
   } catch (e) {
-    console.error("notify failed", e);
+    console.error("admin notify failed", e);
+  }
+
+  // 2) Confirmation to the parent (best-effort, only if they gave an email).
+  try {
+    if (email && process.env.BREVO_API_KEY) {
+      const mail = userConfirmationEmail(data);
+      await sendBrevoEmail({
+        to: [{ email, name }],
+        subject: mail.subject,
+        htmlContent: mail.html,
+      });
+    }
+  } catch (e) {
+    console.error("user confirmation failed", e);
   }
 
   return NextResponse.json({ ok: true }, { status: 201 });
