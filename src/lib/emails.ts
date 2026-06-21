@@ -4,14 +4,15 @@ import { esc } from "./brevo";
 /** Wraps email body content in the Little Elara Steps brand theme (table-based, inline styles). */
 function shell(inner: string, preheader = ""): string {
   return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${SITE.name}</title></head>
-<body style="margin:0;padding:0;background:#F6FBFE;font-family:Arial,Helvetica,sans-serif;color:#33445C;">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${SITE.name}</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet"></head>
+<body style="margin:0;padding:0;background:#F6FBFE;font-family:'Quicksand','Segoe UI',Arial,sans-serif;color:#33445C;">
 <span style="display:none;max-height:0;overflow:hidden;opacity:0;">${esc(preheader)}</span>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F6FBFE;padding:24px 12px;">
 <tr><td align="center">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #DCE8F2;">
   <tr><td style="background:#1E7FAE;padding:22px 28px;">
-    <div style="font-size:20px;font-weight:bold;color:#ffffff;">Little Elara Steps</div>
+    <div style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:700;color:#ffffff;">Little Elara Steps</div>
     <div style="font-size:11px;color:#D7ECF7;letter-spacing:1px;">INCLUSIVE DAY CARE &amp; PRE SCHOOL &middot; NEW ASHOK NAGAR</div>
   </td></tr>
   <tr><td style="padding:28px;">${inner}</td></tr>
@@ -44,7 +45,7 @@ export interface EnquiryData {
 export function adminEnquiryEmail(d: EnquiryData) {
   const inner = `
     <div style="display:inline-block;background:#FFE6DC;color:#D24E26;font-size:12px;font-weight:bold;padding:5px 12px;border-radius:999px;">NEW ENQUIRY</div>
-    <h1 style="font-size:22px;color:#33445C;margin:14px 0 4px;">You have a new admission enquiry</h1>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:24px;color:#33445C;margin:14px 0 4px;">You have a new admission enquiry</h1>
     <p style="font-size:14px;color:#6E7E93;margin:0 0 18px;">A parent just submitted the enquiry form on your website.</p>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #DCE8F2;">
       ${row("Name", d.name)}
@@ -67,7 +68,7 @@ export function userConfirmationEmail(d: EnquiryData) {
   );
   const inner = `
     <div style="display:inline-block;background:#E7F6EA;color:#4FA473;font-size:12px;font-weight:bold;padding:5px 12px;border-radius:999px;">ENQUIRY RECEIVED</div>
-    <h1 style="font-size:23px;color:#33445C;margin:14px 0 6px;">Thank you, ${esc(d.name)}! <span style="color:#F2683F;">&#128156;</span></h1>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:25px;color:#33445C;margin:14px 0 6px;">Thank you, ${esc(d.name)}! <span style="color:#F2683F;">&#128156;</span></h1>
     <p style="font-size:15px;color:#6E7E93;line-height:1.6;margin:0 0 18px;">
       We have received your enquiry for <b style="color:#1E7FAE;">Little Elara Steps</b> and our team will get back to you within <b>one working day</b>. We can&rsquo;t wait to welcome your little one.
     </p>
@@ -90,7 +91,7 @@ export function userConfirmationEmail(d: EnquiryData) {
 /** Admin login one-time-passcode email. */
 export function otpEmail(code: string, name = "Admin") {
   const inner = `
-    <h1 style="font-size:21px;color:#33445C;margin:0 0 6px;">Hi ${esc(name)}, here is your login code</h1>
+    <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:23px;color:#33445C;margin:0 0 6px;">Hi ${esc(name)}, here is your login code</h1>
     <p style="font-size:14px;color:#6E7E93;margin:0 0 18px;">Use this one-time code to sign in to the Little Elara Steps admin.</p>
     <div style="background:#F6FBFE;border:1px solid #DCE8F2;border-radius:14px;padding:18px;text-align:center;">
       <div style="font-size:34px;font-weight:bold;letter-spacing:10px;color:#1E7FAE;font-family:'Courier New',monospace;">${esc(code)}</div>

@@ -33,38 +33,41 @@ export const NAV_LINKS = [
 ];
 
 export const HERO = {
-  badge: "Inclusive Day Care & Pre School · New Ashok Nagar",
-  titleLight: "Every child learns at their own pace.",
-  titleBold: "Every little step matters.",
-  subtitle:
-    "A safe, happy and structured space for every child, including children who need extra developmental support. Learning through play, life skills and lots of love.",
-  ctaPrimary: "Book a Visit",
+  badge: "Specialized Day Care · East Delhi",
+  titleLight: "A safe, happy &",
+  titleHighlight: "structured space",
+  titleEnd: "for every child.",
+  // segments: string | { b } highlighted
+  subtitle: [
+    "Little Elara Steps is a life-skills based day care for ",
+    { b: "regular children" },
+    ", and children with ",
+    { b: "ASD, ADHD" },
+    " and ",
+    { b: "developmental delays" },
+    ". Where little steps become confident journeys.",
+  ],
+  ctaPrimary: "Book Enquiry",
   ctaSecondary: "Our Programs",
-  chips: ["Safe & secure", "Inclusive", "Play-based", "Parent-focused"],
+  chips: ["Safe & Child-Friendly", "Personal Attention", "ASD & ADHD Focus"],
 };
 
 export const ABOUT = {
   badge: "About Us",
-  title: "A warm second home where",
-  titleBold: "every child belongs.",
+  title: "Not just a day care.",
+  titleBold: "A place to grow.",
   // A paragraph is a string, or an array of parts where { b } is highlighted.
   paragraphs: [
+    "Little Elara Steps is a life-skills based day care space created with the belief that every child deserves care, confidence, independence, and a safe place to grow.",
     [
-      "Little Elara Steps is an inclusive day care and pre school in New Ashok Nagar, East Delhi. We welcome ",
+      "We focus on structured routine building, activity-based learning, emotional development, social skills and confidence, for both ",
       { b: "regular children" },
       " and children with ",
-      { b: "ASD, ADHD" },
-      " and ",
-      { b: "developmental delays" },
-      " into the same caring, structured environment.",
+      { b: "ASD, ADHD and developmental delays" },
+      ".",
     ],
-    [
-      "We believe every child grows differently, and ",
-      { b: "every small step matters" },
-      ". Instead of focusing only on studies, we focus on skills, communication, confidence and independence, so each child grows at their own pace.",
-    ],
-    "Parents receive regular updates and progress feedback, so you always understand your child's journey with us.",
   ],
+  punch: "We help children learn life, not just lessons.",
   focusTitle: "We focus on",
   focus: [
     "Skill Development",
@@ -117,16 +120,21 @@ export const PROGRAMS = {
 
 export const WHY = {
   badge: "Why Choose Us",
-  title: "What makes",
-  titleBold: "Little Elara Steps different",
-  subtitle: "Not just lessons, but life. We care for the whole child.",
+  title: "Why parents choose",
+  titleBold: "Little Elara Steps",
+  subtitle:
+    "A premium, structured day care that puts your child's growth, confidence and joy at the centre of everything we do.",
   items: [
-    { icon: "UsersThree", title: "Inclusive environment", tint: "sky" },
-    { icon: "Sparkle", title: "Individualized activities", tint: "blush" },
-    { icon: "CalendarCheck", title: "Structured daily routine", tint: "sage" },
-    { icon: "NotePencil", title: "Progress monitoring", tint: "clay" },
-    { icon: "ChatsCircle", title: "Parent guidance & support", tint: "sand" },
-    { icon: "PuzzlePiece", title: "Learning through play", tint: "lilac" },
+    { icon: "HandHeart", title: "Life-skills based care", tint: "sky" },
+    { icon: "PuzzlePiece", title: "Special focus on ASD & ADHD", tint: "blush" },
+    { icon: "ShieldCheck", title: "Safe & child-friendly", tint: "sage" },
+    { icon: "HeartStraight", title: "Personal attention for every child", tint: "clay" },
+    { icon: "CalendarCheck", title: "Daily routine + independence", tint: "sand" },
+    { icon: "NotePencil", title: "Parent trust + progress monitoring", tint: "lilac" },
+    { icon: "Sun", title: "Structured learning through play", tint: "sky" },
+    { icon: "UsersThree", title: "Emotional & social skill development", tint: "blush" },
+    { icon: "ChatsCircle", title: "Parent guidance & support", tint: "sage" },
+    { icon: "Sparkle", title: "Warm, caring, professional team", tint: "clay" },
   ],
 };
 

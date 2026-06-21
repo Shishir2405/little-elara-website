@@ -87,6 +87,10 @@ export function About() {
             ))}
           </motion.div>
 
+          <motion.p variants={fadeUp} className="text-highlight mt-4 text-[1.02rem] font-semibold">
+            {ABOUT.punch}
+          </motion.p>
+
           {/* Focus chips */}
           <motion.div variants={fromRight} className="mt-6">
             <p className="text-sky-deep text-[0.82rem] font-semibold tracking-wide uppercase">

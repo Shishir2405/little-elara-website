@@ -51,7 +51,15 @@ export function Hero() {
               transition={{ delay: 0.35, duration: 0.6 }}
               className="text-highlight font-semibold"
             >
-              {HERO.titleBold}
+              {HERO.titleHighlight}
+            </motion.span>{" "}
+            <motion.span
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+              className="inline-block"
+            >
+              {HERO.titleEnd}
             </motion.span>
           </h1>
 
@@ -61,7 +69,15 @@ export function Hero() {
             transition={{ delay: 0.45, duration: 0.6 }}
             className="text-ink-soft mt-4 max-w-[52ch] text-[0.88rem] leading-relaxed sm:text-[0.97rem]"
           >
-            {HERO.subtitle}
+            {HERO.subtitle.map((seg, j) =>
+              typeof seg === "string" ? (
+                <span key={j}>{seg}</span>
+              ) : (
+                <span key={j} className="text-sky-deep font-semibold">
+                  {seg.b}
+                </span>
+              )
+            )}
           </motion.p>
 
           <motion.div
