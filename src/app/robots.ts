@@ -2,19 +2,18 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/constants";
 
 export default function robots(): MetadataRoute.Robots {
+  const disallow = ["/admin", "/admin-login", "/api/"];
   return {
     rules: [
-      // All search engines
-      { userAgent: "*", allow: "/" },
+      { userAgent: "*", allow: "/", disallow },
       // Explicitly welcome AI search crawlers (GEO / AI Overviews / ChatGPT / Perplexity)
-      { userAgent: "GPTBot", allow: "/" },
-      { userAgent: "OAI-SearchBot", allow: "/" },
-      { userAgent: "ChatGPT-User", allow: "/" },
-      { userAgent: "ClaudeBot", allow: "/" },
-      { userAgent: "Claude-Web", allow: "/" },
-      { userAgent: "PerplexityBot", allow: "/" },
-      { userAgent: "Google-Extended", allow: "/" },
-      { userAgent: "Bingbot", allow: "/" },
+      { userAgent: "GPTBot", allow: "/", disallow },
+      { userAgent: "OAI-SearchBot", allow: "/", disallow },
+      { userAgent: "ChatGPT-User", allow: "/", disallow },
+      { userAgent: "ClaudeBot", allow: "/", disallow },
+      { userAgent: "PerplexityBot", allow: "/", disallow },
+      { userAgent: "Google-Extended", allow: "/", disallow },
+      { userAgent: "Bingbot", allow: "/", disallow },
     ],
     sitemap: `${SITE.url}/sitemap.xml`,
     host: SITE.url,

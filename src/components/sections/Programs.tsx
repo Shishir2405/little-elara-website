@@ -42,7 +42,7 @@ export function Programs() {
               />
 
               {/* card */}
-              <div className="bite-tr relative flex h-full flex-col gap-3.5 rounded-[26px] rounded-tr-none bg-white p-6">
+              <div className="bite-tr relative flex h-full flex-col gap-3.5 rounded-[26px] rounded-tr-none bg-white p-5 sm:p-6">
                 <span
                   className={`text-charcoal grid h-12 w-12 place-items-center rounded-2xl ${tintCard(p.tint)}`}
                 >

@@ -116,9 +116,9 @@ export function About() {
               <motion.div
                 key={f.role}
                 variants={fadeUp}
-                className="bg-cream flex items-center gap-4 rounded-md p-4"
+                className="bg-cream flex flex-col items-center gap-3 rounded-md p-5 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left"
               >
-                <div className="w-24 shrink-0">
+                <div className="w-20 shrink-0 sm:w-24">
                   {/* TODO(client): add founder photo */}
                   <ImageSlot label="Photo" shape="circle" tint="blush" aspect="1 / 1" />
                 </div>

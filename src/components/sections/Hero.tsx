@@ -26,13 +26,13 @@ export function Hero() {
       <CloudRainbow className="floaty absolute top-[14%] right-[6%] hidden w-20 sm:block" />
 
       {/* Centered intro (sits above the kids) */}
-      <div className="relative z-20 mx-auto max-w-[1180px] px-6 pb-[clamp(170px,21vw,260px)]">
+      <div className="relative z-20 mx-auto max-w-[1180px] px-6 pb-[clamp(160px,20vw,260px)]">
         <div className="mx-auto flex max-w-[800px] flex-col items-center text-center">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
             <Badge>{HERO.badge}</Badge>
           </motion.div>
 
-          <h1 className="text-charcoal mt-5 text-[clamp(1.6rem,4.6vw,3.2rem)] leading-[1.1] font-normal">
+          <h1 className="text-charcoal mt-5 text-[clamp(1.4rem,4.6vw,3.2rem)] leading-[1.1] font-normal">
             <motion.span
               variants={stagger(0.06)}
               initial="hidden"
@@ -59,7 +59,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.6 }}
-            className="text-ink-soft mt-4 max-w-[52ch] text-[0.97rem] leading-relaxed"
+            className="text-ink-soft mt-4 max-w-[52ch] text-[0.88rem] leading-relaxed sm:text-[0.97rem]"
           >
             {HERO.subtitle}
           </motion.p>
@@ -117,7 +117,7 @@ export function Hero() {
           width={1024}
           height={1536}
           priority
-          className="h-auto w-[clamp(92px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
+          className="h-auto w-[clamp(100px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
         />
       </motion.div>
 
@@ -133,7 +133,7 @@ export function Hero() {
           width={1024}
           height={1536}
           priority
-          className="h-auto w-[clamp(92px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
+          className="h-auto w-[clamp(100px,24vw,330px)] drop-shadow-[0_18px_24px_rgba(30,127,174,0.2)]"
         />
       </motion.div>
 

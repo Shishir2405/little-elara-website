@@ -42,19 +42,47 @@ const METHODS = [
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [errors, setErrors] = useState<Record<string, boolean>>({});
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setSubmitError("");
     const data = new FormData(e.currentTarget);
     const next: Record<string, boolean> = {};
     ["name", "phone", "age"].forEach((k) => {
       if (!String(data.get(k) ?? "").trim()) next[k] = true;
     });
     setErrors(next);
-    if (Object.keys(next).length === 0) {
+    if (Object.keys(next).length > 0) return;
+
+    const payload = {
+      name: data.get("name"),
+      phone: data.get("phone"),
+      age: data.get("age"),
+      program: data.get("program"),
+      message: data.get("message"),
+    };
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error || "Something went wrong.");
+      }
       setSent(true);
-      // TODO(client): connect this to email or a form service (e.g. Formspree / Google Forms).
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : "Could not send. Please call or WhatsApp us."
+      );
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -64,7 +92,7 @@ export function Contact() {
   return (
     <section id="contact" className="bg-cream relative pt-14 sm:pt-20">
       <div className="mx-auto max-w-[1180px] px-6 pb-14 sm:pb-20">
-        <div className="grid items-start gap-10 lg:grid-cols-2">
+        <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-10">
           {/* Left: intro + contact methods */}
           <motion.div variants={stagger(0.1)} initial="hidden" whileInView="show" viewport={inView}>
             <motion.div variants={fadeUp}>
@@ -194,8 +222,13 @@ export function Contact() {
                   />
                 </label>
 
+                {submitError && (
+                  <p className="bg-highlight-soft text-highlight-deep rounded-sm px-3 py-2 text-center text-[0.82rem] font-medium">
+                    {submitError}
+                  </p>
+                )}
                 <Button type="submit" full arrow>
-                  Send enquiry
+                  {submitting ? "Sending..." : "Send enquiry"}
                 </Button>
                 <p className="text-ink-soft text-center text-[0.78rem]">
                   We reply within one working day. Your details stay private.

@@ -59,19 +59,19 @@ export function AgeJourney() {
             style={{ top: `calc(6.5rem + ${i * 1.15}rem)` }}
           >
             <div
-              className={`shadow-lift rounded-[28px] border border-white/50 p-7 sm:p-9 ${tintCard(step.tint)}`}
+              className={`shadow-lift rounded-[28px] border border-white/50 p-5 sm:p-9 ${tintCard(step.tint)}`}
             >
               <div className="grid items-center gap-6 md:grid-cols-[0.85fr_1.15fr]">
                 {/* Age + step marker */}
                 <div className="flex items-center gap-4 md:flex-col md:items-start md:gap-3">
-                  <span className="text-charcoal shadow-soft grid h-14 w-14 shrink-0 place-items-center rounded-full bg-white text-[1.05rem] font-semibold">
+                  <span className="text-charcoal shadow-soft grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-[1.05rem] font-semibold sm:h-14 sm:w-14">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div>
                     <span className="text-charcoal/55 text-[0.78rem] font-semibold tracking-wide uppercase">
                       Age group
                     </span>
-                    <h3 className="text-charcoal text-[clamp(1.8rem,4.5vw,2.6rem)] leading-none font-semibold">
+                    <h3 className="text-charcoal text-[clamp(1.5rem,6vw,2.6rem)] leading-none font-semibold">
                       {step.age}
                     </h3>
                   </div>
@@ -82,7 +82,7 @@ export function AgeJourney() {
                   {step.goals.map((g) => (
                     <li
                       key={g}
-                      className="text-charcoal flex items-center gap-2 rounded-xl bg-white/75 px-3.5 py-2.5 text-[0.88rem] font-medium"
+                      className="text-charcoal flex items-center gap-2 rounded-xl bg-white/75 px-3 py-2 text-[0.85rem] font-medium sm:px-3.5 sm:py-2.5"
                     >
                       <CheckCircle size={17} weight="fill" className="text-sage-deep shrink-0" />
                       {g}

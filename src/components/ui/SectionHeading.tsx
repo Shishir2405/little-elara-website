@@ -34,14 +34,14 @@ export function SectionHeading({
       )}
       <motion.h2
         variants={fadeUp}
-        className={`max-w-[20ch] text-[clamp(1.5rem,3vw,2.15rem)] font-normal ${light ? "text-cream" : "text-charcoal"}`}
+        className={`max-w-[20ch] text-[clamp(1.35rem,3.4vw,2.15rem)] font-normal ${light ? "text-cream" : "text-charcoal"}`}
       >
         {title} {titleBold && <span className="text-highlight font-semibold">{titleBold}</span>}
       </motion.h2>
       {subtitle && (
         <motion.p
           variants={fadeUp}
-          className={`max-w-[52ch] text-[0.95rem] leading-relaxed ${light ? "text-cream/70" : "text-ink-soft"}`}
+          className={`max-w-[52ch] text-[0.88rem] leading-relaxed sm:text-[0.95rem] ${light ? "text-cream/70" : "text-ink-soft"}`}
         >
           {subtitle}
         </motion.p>

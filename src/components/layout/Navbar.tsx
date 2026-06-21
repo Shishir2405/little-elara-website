@@ -29,11 +29,16 @@ export function Navbar() {
     <header className="sticky top-0 z-50 px-4 pt-4">
       <div className="relative mx-auto max-w-[1180px]">
         <nav
-          className={`rounded-pill flex min-h-[64px] items-center justify-between bg-white px-5 py-2.5 transition-shadow duration-300 sm:px-7 ${
+          className={`rounded-pill flex min-h-[60px] items-center justify-between border border-transparent bg-white px-4 py-2 transition-shadow duration-300 sm:px-7 sm:py-2.5 ${
             scrolled ? "shadow-lift" : "shadow-medium"
           }`}
         >
-          {/* Left links (desktop) */}
+          {/* Mobile: logo on the left */}
+          <a href="#top" aria-label="Little Elara Steps home" className="lg:hidden">
+            <Logo size={46} />
+          </a>
+
+          {/* Desktop: left links */}
           <ul className="text-charcoal hidden items-center gap-6 text-[0.9rem] font-medium lg:flex">
             {left.map((l) => (
               <li key={l.href}>
@@ -44,7 +49,7 @@ export function Navbar() {
             ))}
           </ul>
 
-          {/* Right links + CTA (desktop) */}
+          {/* Desktop: right links + CTA */}
           <div className="ml-auto hidden items-center gap-6 lg:flex">
             <ul className="text-charcoal flex items-center gap-6 text-[0.9rem] font-medium">
               {right.map((l) => (
@@ -60,22 +65,22 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile toggle */}
+          {/* Mobile: hamburger */}
           <button
-            className="bg-sky-soft text-sky-deep ml-auto grid h-11 w-11 place-items-center rounded-full lg:hidden"
-            onClick={() => setOpen((o) => !o)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            className="bg-sky-soft text-sky-deep grid h-11 w-11 place-items-center rounded-full lg:hidden"
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
             aria-expanded={open}
           >
-            {open ? <X size={22} /> : <List size={22} />}
+            <List size={22} />
           </button>
         </nav>
 
-        {/* Centered logo medallion */}
+        {/* Desktop: centered logo medallion */}
         <a
           href="#top"
           aria-label="Little Elara Steps home"
-          className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-1/2 z-10 hidden -translate-x-1/2 -translate-y-1/2 lg:block"
         >
           <span className="shadow-medium ring-border-soft block rounded-full bg-white p-1 ring-1">
             <Logo size={62} />
@@ -83,35 +88,57 @@ export function Navbar() {
         </a>
       </div>
 
-      {/* Mobile overlay menu */}
+      {/* Mobile slide-in sidebar drawer */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: reduce ? 0 : 0.3, ease: EASE }}
-            className="border-border-soft shadow-lift mx-auto mt-10 max-w-[1180px] rounded-lg border bg-white p-6 lg:hidden"
-          >
-            <ul className="flex flex-col gap-1 text-lg">
-              {NAV_LINKS.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="text-charcoal hover:bg-sky-soft block rounded-md px-3 py-2.5 transition-colors"
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-4">
-              <Button href="#contact" full onClick={() => setOpen(false)} arrow>
-                Book a Visit
-              </Button>
-            </div>
-          </motion.div>
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: reduce ? 0 : 0.25 }}
+              onClick={() => setOpen(false)}
+              className="bg-charcoal/40 fixed inset-0 z-[60] backdrop-blur-sm lg:hidden"
+            />
+            <motion.aside
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: reduce ? 0 : 0.3, ease: EASE }}
+              className="bg-cream shadow-lift fixed top-0 right-0 z-[70] flex h-full w-[80%] max-w-[320px] flex-col p-6 lg:hidden"
+            >
+              <div className="flex items-center justify-between">
+                <Logo size={46} />
+                <button
+                  onClick={() => setOpen(false)}
+                  aria-label="Close menu"
+                  className="text-charcoal shadow-soft grid h-11 w-11 place-items-center rounded-full bg-white"
+                >
+                  <X size={22} />
+                </button>
+              </div>
+
+              <ul className="mt-8 flex flex-col gap-1 text-[1.05rem]">
+                {NAV_LINKS.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      className="text-charcoal hover:bg-sky-soft hover:text-sky-deep block rounded-md px-3 py-3 font-medium transition-colors"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-auto">
+                <Button href="#contact" full onClick={() => setOpen(false)} arrow>
+                  Book a Visit
+                </Button>
+              </div>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </header>
